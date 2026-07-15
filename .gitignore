@@ -1,5 +1,6 @@
 venv/
 KivaMatlabData/
 bashrc
-.gitattributes
 .vscode
+.mat
+KivaCSVs/05_L_Loan_L.csv
