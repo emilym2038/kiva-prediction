@@ -1,5 +1,6 @@
 import pandas as pd
 
+"""
 columns_to_drop_loan = [
     'trm_amnt', 
     'trm_dsbsl_amnt', 
@@ -32,9 +33,24 @@ columns_to_drop_lender = [
     'name', 
     'occu_info', 
     'loan_bcuz'
+]"""
+
+columns_drop_borrowers = [
+    'amnt_basket',
+    'amnt_curloss',
+    'desc_es',
+    'desc_fr',
+    'desc_ru',
+    'desc_pt',
+    'desc_ar',
+    'desc_id',
+    'desc_vi',
+    'desc_mn',
+    'vdd_utb_id',
+    'vid_id',
 ]
 
-loaners = pd.read_csv('KivaCSVs/05_L_loan_L.csv')
-loaners_new = loaners.drop(columns=columns_to_drop_loan)
+loaners = pd.read_csv('05_L_loan_L.csv')
+loaners_new = loaners.drop(columns=columns_drop_borrowers)
 
-loaners_new.to_csv('05_L_Loan_L.csv', index=False)
+loaners_new.to_csv('05_L_Loan_L_dropped.csv', index=False)

@@ -3,4 +3,6 @@ KivaMatlabData/
 bashrc
 .vscode
 .mat
-KivaCSVs/05_L_Loan_L.csv
+cleaned_csv/loaner_info.csv
+raw_csv/
+cleaned_csv/

@@ -59,5 +59,4 @@ print("\n--- DataFrame Summary ---")
 print(df_loan.shape)
 print(df_loan.head())
 
-# Save your output safely!
 df_loan.to_csv('05_L_loan_L.csv', index=False)
