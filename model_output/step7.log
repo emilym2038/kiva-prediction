@@ -1,0 +1,12 @@
+Partner-FE train matrix: (1336185, 276) (243 partner dummies)
+REPORT: distance coefficients, main spec vs partner-FE spec:
+                    coef_main  coef_partner_fe  abs_main_rank  abs_fe_rank
+contig               0.354273         0.042779            1.0          4.0
+comcol               0.244124         0.291248            2.0          1.0
+comlang_off          0.209663         0.137108            3.0          2.0
+col_dep_ever        -0.179334        -0.033445            4.0          6.0
+comlang_ethno       -0.154670        -0.038006            5.0          5.0
+comrelig             0.075634         0.120847            6.0          3.0
+log_dist            -0.019340        -0.005311            7.0          8.0
+diplo_disagreement  -0.003874         0.009063            8.0          7.0
+=== STEP 7 COMPLETE ===

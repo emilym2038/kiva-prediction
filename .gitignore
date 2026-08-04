@@ -6,3 +6,5 @@ bashrc
 cleaned_csv/loaner_info.csv
 raw_csv/
 cleaned_csv/
+distance_data/
+stat_csv/

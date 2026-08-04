@@ -1,0 +1,41 @@
+=== Loading data ===
+(1628974, 47)
+REPORT: residual null rows in core distance cols (log_dist/contig/comlang/col_dep/comcol): 98
+Rows after dropping residual-null core-distance rows: 1628876
+REPORT: sparse col 'comrelig' missing rows: 25049 (1.5378%)
+REPORT: sparse col 'diplo_disagreement' missing rows: 23054 (1.4153%)
+Imputed comrelig with train median 0.1700; touched 25049 rows total
+Imputed diplo_disagreement with train median 2.7870; touched 23054 rows total
+=== Preprocessing: standardize continuous, one-hot already present for sector ===
+Train matrix: (1336185, 33), Test matrix: (292691, 33)
+Class balance train: 0.1710, test: 0.1702
+=== Step 4: GroupKFold CV for C / l1_ratio ===
+C=0.03, l1_ratio=0.1: CV AUC=0.69316 folds=[0.7002, 0.6886, 0.6906]
+C=0.03, l1_ratio=0.5: CV AUC=0.69314 folds=[0.7002, 0.6886, 0.6906]
+C=0.03, l1_ratio=0.9: CV AUC=0.69312 folds=[0.7002, 0.6886, 0.6906]
+C=0.1, l1_ratio=0.1: CV AUC=0.69314 folds=[0.7002, 0.6887, 0.6906]
+C=0.1, l1_ratio=0.5: CV AUC=0.69315 folds=[0.7002, 0.6886, 0.6906]
+C=0.1, l1_ratio=0.9: CV AUC=0.69314 folds=[0.7002, 0.6886, 0.6906]
+C=0.3, l1_ratio=0.1: CV AUC=0.69315 folds=[0.7002, 0.6887, 0.6906]
+C=0.3, l1_ratio=0.5: CV AUC=0.69315 folds=[0.7002, 0.6887, 0.6906]
+C=0.3, l1_ratio=0.9: CV AUC=0.69315 folds=[0.7002, 0.6887, 0.6906]
+C=1.0, l1_ratio=0.1: CV AUC=0.69314 folds=[0.7002, 0.6886, 0.6906]
+C=1.0, l1_ratio=0.5: CV AUC=0.69315 folds=[0.7002, 0.6887, 0.6906]
+C=1.0, l1_ratio=0.9: CV AUC=0.69315 folds=[0.7002, 0.6887, 0.6906]
+REPORT: selected C=0.03, l1_ratio=0.1, CV AUC mean=0.69316
+=== Step 5: fit final model on full training set ===
+REPORT: standardized distance coefficients (main spec), ranked by |coef|:
+contig                0.354273
+comcol                0.244124
+comlang_off           0.209663
+col_dep_ever         -0.179334
+comlang_ethno        -0.154670
+comrelig              0.075634
+log_dist             -0.019340
+diplo_disagreement   -0.003874
+dtype: float64
+REPORT: distance coefficients regularized to exactly zero: 0 / 8
+=== Step 6: evaluation ===
+Lender-grouped test: AUC=0.6919, PR-AUC=0.3933 (base rate 0.1702)
+Temporal test: AUC=0.6932, PR-AUC=0.3555 (base rate 0.1699)
+=== STAGE 1 COMPLETE (through Step 6) ===
