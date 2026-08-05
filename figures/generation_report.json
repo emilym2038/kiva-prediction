@@ -1,0 +1,19 @@
+{
+  "fig2_version": "focused",
+  "fig2_features_shown": [
+    "log_dist",
+    "comrelig",
+    "diplo_disagreement",
+    "comlang_off"
+  ],
+  "fig3_includes_nlp": true,
+  "fig3_category_pct": {
+    "Loan characteristics": 80.94274644855778,
+    "Distance": 13.03056392595786,
+    "Narrative / text (NLP)": 6.026689625484342
+  },
+  "fig4_shared_x_range_log_dist": [
+    7.8220438957214355,
+    9.691593170166016
+  ]
+}

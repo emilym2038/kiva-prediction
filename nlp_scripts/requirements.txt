@@ -1,0 +1,14 @@
+# Dependencies for the NLP pipeline (nlp_scripts/), run separately from the
+# main requirements.txt because these scripts were run on an HPC GPU cluster,
+# not the local venv/ used for the rest of the pipeline. Versions are not
+# pinned here since they were never captured from that environment — install
+# the latest compatible versions, or pin them yourself once you have a
+# working setup.
+pandas
+numpy
+torch
+transformers
+tqdm
+spacy
+textstat
+matplotlib
