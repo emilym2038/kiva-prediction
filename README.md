@@ -1,10 +1,10 @@
 # Kiva Moral-Distance Prediction
 
-Does distance between a lender and a borrower — geographic, cultural, linguistic,
-relational — predict which loans a Kiva lender chooses to fund? This repo builds a
-lender–loan choice dataset from Kiva's platform data, joins it against a gravity-model
-country-distance dataset (CEPII) and NLP-derived features of loan narratives, and fits
-an elastic-net logistic regression to rank the predictors.
+Do various distances between a lender and a borrower (geographic, cultural, linguistic,
+relational) predict which loans a Kiva lender chooses to fund? This project builds a
+lender–loan choice dataset from Kiva snapshot data, joins it against a gravity-model
+country-distance dataset (CEPII), other country-level distance sources, and NLP-derived features of loan narratives.
+It then fits various models including elastic-net logistic regression, XGBoost, and Random Forest to rank the predictors and test our research question.
 
 ## Pipeline
 
@@ -23,13 +23,7 @@ same stage's inputs/outputs (data directories are gitignored — see
 
 ## Data availability
 
-Everything under `KivaMatlabData/`, `raw_csv/`, `cleaned_csv/`, `distance_data/`,
-`stat_csv/`, and `nlp_output/` is gitignored and **not included in this repo** — most
-of it is either raw platform data too large/sensitive to publish, or intermediate
-output that's cheap to regenerate by running the pipeline above in order. If you're
-picking this repo up fresh, you'll need the original Kiva `.mat` exports and the
-[CEPII Gravity dataset](http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=8)
-to start from step 1.
+The majority of both raw and generated data was not committed to this repository due largely to size. It can be regnerated by downloading the Kiva platfrom data from FODOVA and the distance data.
 
 ## Setup
 
@@ -43,20 +37,3 @@ pip install -r requirements.txt
 modeling, figures). The NLP step (4) was run in a separate HPC/GPU environment —
 see [nlp_scripts/requirements.txt](nlp_scripts/requirements.txt) for those
 (unpinned) dependencies.
-
-## Known gaps
-
-A couple of files referenced by the scripts above aren't currently produced by
-anything in the repo — flagging here rather than silently working around them:
-
-- `cleaned_csv/pairs_dataset_fixed.parquet` and `country_pair_distances_fixed.parquet`
-  (read by `model_output/common.py`) are a corrected version of step 3's output —
-  the fixes are documented in `cleaned_csv/build_summary_fixes.json`, but the script
-  that applied them isn't checked in.
-- `model_output/step9_outputs.py` and `figures/generate_figures.py` both expect a
-  `model_output/robustness/` directory (bootstrap CI tables, SHAP/partial-dependence
-  export for the saturation curve) that doesn't exist in the repo yet.
-- `distance_scripts/columns_drop.py` writes `gravity_filtered_more.csv` — the file
-  `pairs_dataset_scripts/build_pairs_dataset.py` expects by default at
-  `distance_data/gravity_filtered_more.csv` — to the current working directory
-  instead of `distance_data/`.
